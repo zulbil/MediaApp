@@ -16,7 +16,7 @@ This application requires installation of Node JS and Mongo DB prior to running.
 
 In your project base directory, run `npm start` to run your express js server.
 
-Go to your web browser and tape `htpp://localhost:4200` your app running. 
+Go to your web browser and tape `htpp://localhost:3000` your app running. 
 
 ## Author
 
