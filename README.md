@@ -20,4 +20,4 @@ Go to your web browser and tape `htpp://localhost:4200` your app running.
 
 ## Author
 
-- Joel Alexandre Khang Zulbal [joel.zulbal@satoripop.com]
+- Joel Alexandre Khang Zulbal [alexkhang25@yahoo.fr]
