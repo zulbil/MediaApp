@@ -1,45 +1,56 @@
-<!DOCTYPE html> 
-    <html> 
-      <head> 
-          <title><%= title %></title> 
+<!DOCTYPE html>
+    <html>
+      <head>
+          <title><%= title %></title>
           <% include partials/stylesheets %>
-          </head> 
-      <body> 
-        <% include partials/header %> 
-   
-        <div class="container"> 
-            <% if (message.length > 0) { %> 
-                <div class="alert alert-warning alert-dismissible
-                   fade in" role="alert"> 
-                  <button type="button" class="close" data-dismiss=
-                     "alert" aria-label="Close"> 
-                    <span aria-hidden="true">&times;</span> 
-                  </button> 
-                  <strong>Ohps!</strong> <%= message %>. 
-                </div> 
-             <% } %> 
-		<form class="form-signin" action="/login" method="POST">
-		<h2 class="form-signin-heading">Welcome sign in</h2> 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-			<button type="submit" class="btn btn-primary">Sign in</button> <br>
-			<p>Don't have an account? <a href="/signup">Signup</a> 
-               ,it's free.</p> 
-        </form>
-        </div> 
- 
-        <% include partials/footer %> 
-        <% include partials/javascript %> 
+          </head>
+      <body>
+        <div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="row justify-content-center align-items-center full-height">
+						<div class="col-12 col-lg-6">
+							<% if (message.length > 0) { %>
+								<div class="alert alert-warning alert-dismissible
+								   fade in" role="alert">
+								  <button type="button" class="close" data-dismiss=
+									 "alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+								  <strong>Ohps!</strong> <%= message %>.
+								</div>
+							<% } %>
+							<form class="form-signin" action="/login" method="POST">
+								<h2 class="form-signin-heading mb-4">Signin</h2>
+					            <div class="form-group">
+					                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+					            </div>
+					            <div class="form-group">
+					                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					            </div>
+								<button type="submit" class="btn btn-full mb-4">Sign in</button> <br>
+								<p>Don't have an account? <a class="c-link" href="/signup">Signup</a>
+					               ,it's free.</p>
+		        			</form>
+						</div>
+					</div>
+				</div>
+				<div class="col no-padding bg-text">
+					<div class="bg-auth full-height">
+						<div class="header-text">
+							<h2>Not one of us ?</h2>
+							<p class="mt-2">
+								If you don't have an account, just sign up. <span>You are welcome!</span>
+							</p>
+						</div>
+						<div class="actions">
+							<a href="/signup" class="btn btn-ghost">Signup</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <% include partials/javascript %>
 </body>
 </html>

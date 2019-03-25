@@ -1,45 +1,41 @@
-<!DOCTYPE html> 
-	<html lang="fr"> 
-	  <head> 
-		  <title><%= title %></title> 
+<!DOCTYPE html>
+	<html lang="fr">
+	  <head>
+		  <title><%= title %></title>
 		  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		  <% include partials/stylesheets %>
-	  </head> 
-	  <body> 
-		<div class="container-fluid"> 
+	  </head>
+	  <body>
+		<div class="container-fluid">
 			<div class="row">
-				<div class="col no-padding">
+				<div class="col no-padding bg-text">
 					<div class="bg-auth full-height">
-						<div class="row align-items-start">
-							<div class="col">
-								<h3>One of us ?</h3>
-								<p class="mt-2">
-									If you already have an account, just sign in. We missed you
-								</p>
-							</div>
+						<div class="header-text">
+							<h2>One of us ?</h2>
+							<p class="mt-2">
+								If you already have an account, just sign in. <span>We missed you</span>
+							</p>
 						</div>
-						<div class="row align-items-end">
-							<div class="col-12">
-								<a href="/login" class="btn btn-white btn-primary">Login</a>
-							</div>
+						<div class="actions">
+							<a href="/login" class="btn btn-ghost">Login</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-12 col-lg-8">
 					<div class="row justify-content-center align-items-center full-height">
 						<div class="col-12 col-lg-6">
-							<% if (message.length > 0) { %> 
+							<% if (message.length > 0) { %>
 						<div class="alert alert-warning alert-dismissible
-						   fade in" role="alert"> 
+						   fade in" role="alert">
 						  <button type="button" class="close" data-dismiss=
-							 "alert" aria-label="Close"> 
-							<span aria-hidden="true">&times;</span> 
-						  </button> 
-						  <strong>Ohps!</strong> <%= message %>. 
-						</div> 
-					<% } %> 
+							 "alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						  <strong>Ohps!</strong> <%= message %>.
+						</div>
+					<% } %>
 					<form class="form-signin" action="/signup" method="POST">
-						  <h2 class="form-signin-heading">Welcome sign in</h2> 
+						  <h2 class="form-signin-heading mb-4">Signup</h2>
 						  <div class="form-group">
 								<input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="firstnameHelp" placeholder="Enter firstname">
 							</div>
@@ -56,17 +52,17 @@
 							<div class="form-group">
 								<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 							</div>
-								  <button type="submit" class="btn btn-primary">Signup</button> <br>
-								  <p>You already have an account? <a href="/login">Signin</a> 
-						   ,it's free.</p> 
+								  <input type="submit" class="btn btn-full mb-4" value="Signup">
+								  <p>You already have an account? <a class="c-link" href="/login">Signin</a>
+						   ,it's free.</p>
 					</form>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
-		</div> 
- 
-		<% include partials/javascript %> 
+		</div>
+
+		<% include partials/javascript %>
 </body>
 </html>
