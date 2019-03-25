@@ -14,7 +14,7 @@ if(env === 'development' || env === 'test') {
 
 urlMongo = process.env.MONGODB_URI; 
 // Connect to the database
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true, useCreateIndex: true });
 
 // Get notified about the connection to the database
 db.on('error', console.error.bind(console, 'connection error:'));

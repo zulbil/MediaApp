@@ -1,3 +1,21 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html> 
+      <html> 
+      <head> 
+           <title>Wohp's Error</title> 
+           <% include partials/stylesheets %> 
+      </head> 
+      <body> 
+           <% include partials/header %> 
+ 
+          <div class="container"> 
+              <div class="page-header m-t-1"> 
+                  <h1>Sorry: <%= message %></h1> 
+                  <h2><%= error.status %></h2> 
+                  <pre><%= error.stack %></pre> 
+              </div> 
+ 
+          </div> 
+           <% include partials/footer %> 
+           <% include partials/javascript %> 
+      </body> 
+      </html>
