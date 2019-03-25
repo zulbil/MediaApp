@@ -1,6 +1,6 @@
 var passport      = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
-var { User }      = require('./../server/models/users'); 
+var { User }      = require('./../server/models/users');
 
 module.exports = function (passport) {
     // Passport init Setup
@@ -16,7 +16,7 @@ module.exports = function (passport) {
         });
     });
 
-    // Signin 
+    // Signin
     passport.use('local-login',new LocalStrategy({
       // change default username and password, to email and password
         usernameField: 'email',
@@ -24,18 +24,18 @@ module.exports = function (passport) {
         passReqToCallback: true
       },
       function(req, email, password, done) {
-        console.log('Login Process'); 
-        console.log(req.body); 
+        console.log('Login Process');
+        console.log(req.body);
         if ( email ) {
-          // format to lower-case 
-          email = email.toLowerCase(); 
+          // format to lower-case
+          email = email.toLowerCase();
           // process asynchronous
           process.nextTick(function (){
             User.findOne({ 'local.email': email }).then((user) => {
               // Check user record and sending message
               if (!user) {
                 console.log('User not found');
-                return done(null, false, req.flash('loginMessage', 'No such user found')); 
+                return done(null, false, req.flash('loginMessage', 'No such user found'));
               }
               if (!user.validPassword(password)) {
                 console.log('Invalid password!!');
@@ -43,10 +43,10 @@ module.exports = function (passport) {
               } else {
                 // Everything is ok
                 console.log('success');
-                return done(null, user); 
+                return done(null, user);
               }
             }).catch((error) => {
-              return done(error); 
+              return done(error);
             })
           })
         }
@@ -54,7 +54,7 @@ module.exports = function (passport) {
     ));
 
     // Signup local strategy
-    passport.use('local-signup',new LocalStrategy({ 
+    passport.use('local-signup',new LocalStrategy({
         // change default username and password, to email and password
         usernameField: 'email',
         passwordField: 'password',
@@ -63,28 +63,28 @@ module.exports = function (passport) {
       function(req, email, password, done) {
         if (email) {
           // format to lowercase
-          email = email.toLowerCase(); 
+          email = email.toLowerCase();
           // process asynchronous
           process.nextTick(function (){
             // check if user is already login
             if (!req.user) {
               User.findOne({ 'local.email' : email }).then((user) => {
                 if (user) {
-                  return done(null, false, req.flash('signupMessage', 'This email is already taken')); 
+                  return done(null, false, req.flash('signupMessage', 'This email is already taken'));
                 } else {
                   // Create a new user
-                  var newUser = new User(); 
+                  var newUser = new User();
                   newUser.local.firstname   = req.body.firstname;
-                  newUser.local.lastname    = req.body.lastname; 
-                  newUser.local.username    = req.body.username; 
-                  newUser.local.email       = req.body.email; 
+                  newUser.local.lastname    = req.body.lastname;
+                  newUser.local.username    = req.body.username;
+                  newUser.local.email       = req.body.email;
                   newUser.local.password    = req.body.password
 
-                  // Save Data 
+                  // Save Data
                   newUser.save().then(()=> {
-                    return done(null, req.user); 
+                    return done(null, req.user, req.flash('loginMessage', 'Your account is created, you can log in now!'));
                   }).catch((error) => {
-                      throw error; 
+                      throw error;
                   })
                 }
               })

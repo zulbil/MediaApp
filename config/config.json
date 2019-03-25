@@ -1,16 +1,13 @@
 {
 	"development": {
-		"PORT": 3000,
 		"MONGODB_URI": "mongodb://localhost:27017/mediaApp",
 		"JWT_SECRET": "cavert785bgcdxokn"
 	},
 	"test": {
-		"PORT": 3000,
 		"MONGODB_URI": "mongodb://localhost:27017/mediaAppTest",
 		"JWT_SECRET": "cavnbct785bgcdxokn"
-    }, 
+    },
     "production": {
-        "PORT": 3000,
         "MONGODB_URI": "",
         "JWT_SECRET": "cavert785bgcdxobe"
     }
