@@ -1,44 +1,29 @@
-<!-- Fixed navbar --> 
-<div class="pos-f-t"> 
-<div class="collapse" id="navbar-header"> 
-    <div class="container bg-inverse p-a-1"> 
-       <h3>Collapsed content</h3> 
-        <p>Toggle able via the navbar brand.</p> 
-    </div> 
-</div> 
-<nav class="navbar navbar-light navbar-static-top"> 
-     <div class="container"> 
-        <button class="navbar-toggler hidden-sm-up" type=
-          "button"data-toggle="collapse" data-target=
-            "#exCollapsingNavbar2"> 
-            Menu 
-        </button>
-        <div class="collapse navbar-toggleable-xs"
-                   id="exCollapsingNavbar2"> 
-                      <a class="navbar-brand" href="/">MVC App</a> 
-                      <ul class="nav navbar-nav navbar-right"> 
-                          <li class="nav-item"> 
-                              <a class="nav-link" href="/login">
-                                Sign in
-                              </a>
-                          </li> 
-                          <li class="nav-item"> 
-                              <a class="nav-link" href="/signup">
-                                Sign up
-                              </a> 
-                           </li> 
-                           <li class="nav-item"> 
-                              <a class="nav-link" href="/profile">
-                                 Profile</a> 
-                           </li> 
-                     
-                          <li class="nav-item"> 
-                              <a class="nav-link" href="/comments">
-                                Comments</a> 
-                          </li> 
-                      </ul> 
-                  </div> 
-              </div> 
-          </nav> 
-      </div> 
-      <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md mb-4 custom-nav">
+	<a class="navbar-brand" href="/"><i class="fa fa-camera-retro" aria-hidden="true"></i></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav ml-auto">
+			<% if (!user) { %>
+				<li class="nav-item">
+					<a class="nav-link" href="/login"> Sign in </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/signup">Sign up </a>
+				</li>
+			<% } %>
+			<% if (user) { %>
+				<li class="nav-item">
+					<a class="nav-link" href="/profile"><img src="<%= gravatar %>" alt=""></a>
+				</li>
+			<% } %>
+
+		</ul>
+
+	<!-- <form class="form-inline mt-2 mt-md-0">
+	  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+	  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form> -->
+	</div>
+</nav>

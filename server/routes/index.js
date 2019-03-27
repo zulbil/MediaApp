@@ -1,6 +1,9 @@
-var express   = require('express');
-var passport  = require('passport');
-var router    = express.Router();
+var express   	= require('express');
+var passport  	= require('passport');
+var multer  	= require('multer');
+
+var upload 		= multer({ dest:'./public/uploads/' });
+var router    	= express.Router();
 
 /** Import controllers */
 var indexCtrl	= require('./../controllers/index');
@@ -50,11 +53,11 @@ router.patch('/comment/edit/:id', isLoggedIn, commentCtrl.editComment );
 
 /** Images routes */
 router.get('/images', isLoggedIn, imagesCtrl.showImages );
-router.post('/upload/images', isLoggedIn, imagesCtrl.uploadImages);
+router.post('/upload/images', isLoggedIn, upload.single('image'), imagesCtrl.uploadImages);
 
 /** Videos routes  */
 router.get('/videos', isLoggedIn, videosCtrl.showVideos);
-router.post('/upload/videos', isLoggedIn, videosCtrl.uploadVideos);
+router.post('/upload/videos', isLoggedIn, upload.single('video'), videosCtrl.uploadVideos);
 
 
 module.exports = router;

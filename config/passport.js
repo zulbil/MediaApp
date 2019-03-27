@@ -24,8 +24,6 @@ module.exports = function (passport) {
         passReqToCallback: true
       },
       function(req, email, password, done) {
-        console.log('Login Process');
-        console.log(req.body);
         if ( email ) {
           // format to lower-case
           email = email.toLowerCase();
@@ -34,15 +32,12 @@ module.exports = function (passport) {
             User.findOne({ 'local.email': email }).then((user) => {
               // Check user record and sending message
               if (!user) {
-                console.log('User not found');
                 return done(null, false, req.flash('loginMessage', 'No such user found'));
               }
               if (!user.validPassword(password)) {
-                console.log('Invalid password!!');
                 return done(null, false, req.flash('loginMessage', 'Your password is wrong'));
               } else {
                 // Everything is ok
-                console.log('success');
                 return done(null, user);
               }
             }).catch((error) => {

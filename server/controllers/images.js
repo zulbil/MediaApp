@@ -3,7 +3,7 @@ var fs 			= require('fs');
 var mime	 	= require('mime');
 // get gravatar icon from email
 var gravatar 	= require('gravatar');
-var Image 		= require('./../models/images');
+var {Image} 	= require('./../models/images');
 
 // Set images files types
 var IMAGES_TYPES	= [ 'image/jpeg', 'image/jpg', 'image/png' ];
@@ -22,13 +22,14 @@ var showImages 		= function (req, res ) {
 
 // Upload images
 var uploadImages 	= function ( req, res ) {
+	console.log("File :",req.file);
+
 	var src,
 		dest,
 		targetPath,
 		targetName,
 		tempPath	= req.file.path;
 
-	console.log(req.file);
 
 	// Get the mime type of the file
 	var type = mime.lookup(req.file.mimetype);
@@ -72,7 +73,7 @@ var uploadImages 	= function ( req, res ) {
 				return res.status(500).send({ message: 'Woh, something bad happened here'})
 			}
 			// Redirect to gallery's page
-			res.redirect('images-gallery');
+			res.redirect('/images');
 		});
 	});
 };

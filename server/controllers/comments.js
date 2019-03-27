@@ -1,5 +1,5 @@
 var gravatar		= 	require('gravatar');
-var Comment 		= 	require('./../models/comments');
+var {Comment} 		= 	require('./../models/comments');
 var {ObjectID}      = 	require('mongodb');
 
 // List comments

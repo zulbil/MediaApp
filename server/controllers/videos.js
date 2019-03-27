@@ -3,7 +3,7 @@ var fs 			= require('fs');
 var mime	 	= require('mime');
 // get gravatar icon from email
 var gravatar 	= require('gravatar');
-var Video 		= require('./../models/videos');
+var {Video} 	= require('./../models/videos');
 
 // Set images files types
 var VIDEOS_TYPES	= ['video/mp4', 'video/webm', 'video/ogg', 'video/ogv'];
